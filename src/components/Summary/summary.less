@@ -1,0 +1,113 @@
+@import '../../constants/colors.less';
+
+.summary {
+  width: 36%;
+  color: @blackColor;
+  box-shadow: 1px 8px 25px rgba(168, 168, 168, 0.13);
+  border-radius: 12px;
+  margin: 0 22px;
+  position: relative;
+
+  &__body {
+    max-height: 337px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #dedede;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track-piece:end {
+      background: transparent;
+      margin-bottom: 15px;
+    }
+  }
+  &__delete {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    display: none;
+
+    button {
+      height: fit-content !important;
+      margin-left: 1px !important;
+    }
+
+    .ant-btn-icon-only > * {
+      font-size: 17px !important;
+    }
+  }
+  &__empty {
+    justify-content: center !important;
+    height: 100%;
+
+    p {
+      top: 40%;
+      transform: translateY(-50%);
+      position: absolute;
+    }
+  }
+  &__field {
+    width: 50%;
+
+    p {
+      margin-bottom: 10px !important;
+    }
+  }
+  &__field:nth-child(2) {
+    border-left: 1px solid #e9ecef;
+    text-align: end;
+  }
+  &__footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(0deg, #f8f9fd 50%, transparent);
+    z-index: 10;
+    width: 100%;
+    filter: opacity(0.7);
+    border-radius: 0 0 10px 10px;
+  }
+  &__header {
+    padding: 9px 27px 27px 27px;
+    width: calc(100% - 2px);
+  }
+  &__headerRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 27px;
+    position: relative;
+
+    &:hover .summary__delete {
+      display: block;
+    }
+  }
+  &__subtitle {
+    font-weight: 700;
+    font-size: 14px;
+    margin: 22px 0;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 30px;
+  }
+}

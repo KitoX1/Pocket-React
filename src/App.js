@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.less';
 
-function App() {
+import LoginPageContainer from "./views/AuthPages/LoginPage/container";
+import MainPageContainer from './views/MainPage/container';
+import RegistrationPageContainer from "./views/AuthPages/RegistrationPage/container";
+
+import { ROUTES } from './constants/routes';
+
+import { Switch, Route } from "react-router-dom";
+
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+          <Route path={ROUTES.login}>
+            <LoginPageContainer />
+          </Route>
+          <Route path={ROUTES.registration}>
+            <RegistrationPageContainer />
+          </Route>
+          <Route path="/">
+            <MainPageContainer />
+          </Route>
+        </Switch>      
     </div>
   );
 }

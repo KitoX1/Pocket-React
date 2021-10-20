@@ -1,0 +1,52 @@
+@import '../../constants/colors.less';
+
+.global {
+  position: relative;
+  color: @blackColor;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 305px;
+    background: #ffffff;
+    box-shadow: 10px 27px 42px rgba(168, 168, 168, 0.13);
+    border-radius: 12px;
+  }
+  &__date {
+    font-weight: 700;
+    font-size: 34px;
+    text-align: center;
+    padding: 28px 28px 32px 28px;
+  }
+  &__expense,
+  &__income {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin: 0 20px;
+    height: 35px;
+    margin-bottom: 39px;
+  }
+  &__income {
+    background: #f8f7fc;
+    border-radius: 6px;
+    margin-bottom: 21px;
+  }
+  &__expense span:last-child,
+  &__income span:last-child {
+    font-weight: 700;
+  }
+  &__expense span:last-child {
+    color: @purpleColor;
+  }
+  &__overall {
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    padding: 22px 0 32px 0;
+  }
+  &__title {
+    font-weight: 700;
+    margin-bottom: 22px !important;
+  }
+}

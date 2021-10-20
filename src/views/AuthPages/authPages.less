@@ -1,0 +1,103 @@
+.authPageBg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbfafd;
+}
+
+.authForm {
+  max-width: 407px;
+  max-height: 95vh;
+  padding: 26px 32px 52px 32px !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto !important;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-family: Montserrat;
+  font-weight: 400;
+  background: white;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+
+  &__auth-message {
+    text-align: center;
+  }
+  &__button {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 500;
+    width: 100%;
+    height: 38px;
+    border-radius: 5px;
+  }
+  &__checkbox .ant-form-item-explain {
+    top: 22px !important;
+  }
+  &__checkboxTitle {
+    font-size: 14px;
+    position: absolute;
+    top: 1px;
+  }
+  &__error {
+    display: block;
+    position: absolute;
+    color: red;
+    top: 467px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  &__forgot {
+    float: right;
+    position: absolute;
+    right: 32px;
+    top: 285px;
+    font-size: 12px;
+  }
+  &__logo {
+    text-align: center;
+    margin-bottom: 30px !important;
+    font-weight: 700;
+    font-size: 24px;
+    color: #7367f0;
+  }
+  &__subtitle {
+    margin-bottom: 24px !important;
+    font-size: 14px;
+  }
+  &__title {
+    margin-bottom: 8px !important;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  input {
+    height: 38px;
+    border-radius: 5px;
+  }
+  label {
+    padding-bottom: 4px;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .ant-checkbox-inner {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+  }
+  .ant-form-item {
+    margin-bottom: 22px;
+  }
+  .ant-form-item-label {
+    padding: 0 !important;
+    border-radius: 5px;
+  }
+  .ant-form-item-explain {
+    position: absolute;
+    top: 38px;
+    font-size: 12px;
+    min-height: unset;
+  }
+}

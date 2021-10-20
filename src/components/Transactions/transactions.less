@@ -1,0 +1,108 @@
+@import '~antd/dist/antd.less';
+@import '../../constants/colors.less';
+
+.transactions {
+  position: relative;
+  width: 64%;
+  font-size: 14px;
+  font-weight: 600;
+  color: @blackColor;
+
+  &__body {
+    max-height: 410px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+    background: #f8f9fd;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #dedede;
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track-piece:end {
+      background: transparent;
+      margin-bottom: 10px;
+    }
+  }
+  &__empty {
+    justify-content: center;
+    height: 100% !important;
+
+    p {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  // &__field {
+  //   margin: 0 5px;
+  // }
+  &__field:nth-child(1) {
+    width: 25%;
+  }
+  &__field:nth-child(2) {
+    width: 33%;
+  }
+  &__field:nth-child(3) {
+    width: 25%;
+  }
+  &__field:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    width: 17%;
+  }
+  &__footer {
+    height: 10px;
+    background: #f8f9fd;
+    border-radius: 0 0 10px 10px;
+  }
+  &__header {
+    font-size: 12px;
+    display: flex;
+    width: calc(100% - 2px);
+    height: 37px;
+    padding: 10px 32px;
+    border-bottom: 1px solid #e9ecef;
+    background: #f3f2f7;
+    border-radius: 10px 10px 0px 0px;
+
+    button {
+      padding: 0;
+      margin: 0;
+      border: none;
+      height: unset;
+      margin-top: -4px;
+      font-size: 18px;
+
+      span:nth-child(2) {
+        font-size: 12px;
+        font-weight: 600;
+        position: absolute;
+        top: 4px;
+      }
+    }
+  }
+  &__row {
+    background: #f8f9fd;
+    display: flex;
+    width: 100%;
+    height: 59px;
+    padding: 19px 32px;
+    border-bottom: 1px solid #e9ecef;
+
+    .transactions__field:nth-child(4) {
+      margin-top: -5px;
+    }
+    svg {
+      font-size: 24px;
+    }
+  }
+}

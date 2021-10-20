@@ -1,0 +1,52 @@
+@import '../../constants/colors.less';
+
+.historyBlock {
+  display: flex;
+  height: 447px;
+  margin-bottom: 50px;
+}
+
+.leftBlock {
+  width: 68%;
+  padding: 62px 0 62px 82px;
+}
+
+.mainPageContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  h1 {
+    font-weight: 700;
+    font-size: 34px;
+    color: @blackColor;
+  }
+}
+
+.profileBlock {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-right: 25px;
+  }
+}
+
+.rightBlock {
+  padding: 62px 82px;
+  border-left: 1px solid rgb(240, 240, 240);
+  width: 32%;
+  background: linear-gradient(155.04deg, #ffffff 38.79%, #f4f3f9 100%);
+}
+
+@media screen and (max-width: 1400px) {
+  .leftBlock {
+    padding: 40px 0 40px 4%;
+  }
+
+  .rightBlock {
+    padding: 40px 4%;
+  }
+}

@@ -1,0 +1,113 @@
+@import '../../constants/colors.less';
+
+.calendar {
+  width: 100%;
+  color: @blackColor;
+  text-align: center;
+  position: relative;
+  height: 447px;
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+  }
+  .ant-picker {
+    padding: 0;
+    border: none;
+  }
+  .ant-picker-input {
+    display: none;
+  }
+  .ant-select {
+    width: 95px;
+    font-weight: 700;
+  }
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #f8f7fc;
+    border: none;
+    border-radius: 6px;
+    color: #7367f0;
+  }
+  .ant-select-arrow {
+    right: 18px;
+    width: 12px;
+    height: 12px;
+    margin-top: -8px;
+    color: #7367f0;
+    font-size: 16px;
+  }
+  .ant-picker-panel-container {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+  .ant-picker-cell {
+    padding: 9px 0;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    top: -6px;
+    right: -9px;
+    bottom: -6px;
+    left: -9px;
+    border: 2px solid #7367f0;
+    border-radius: 30px;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+  .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner,
+  .ant-picker-content th {
+    border-radius: 30px;
+  }
+  .ant-picker-cell-week {
+    display: none;
+  }
+  .ant-picker-dropdown {
+    font-family: 'Montserrat';
+    left: unset !important;
+    top: 50px !important;
+    width: 100%;
+    z-index: 999;
+  }
+  .ant-picker-week-panel {
+    width: 295px;
+  }
+
+  .ant-picker-cell-in-view,
+  .ant-picker-content th,
+  .ant-picker-header {
+    color: #5e5873 !important;
+  }
+
+  .ant-picker-week-panel-row-selected td:nth-child(2),
+  .ant-picker-week-panel-row:hover td:nth-child(2) {
+    border-radius: 20px 0 0 20px;
+  }
+
+  .ant-picker-week-panel-row-selected td:last-child,
+  .ant-picker-week-panel-row:hover td:last-child {
+    border-radius: 0 20px 20px 0;
+  }
+
+  .ant-picker-header,
+  .ant-picker-panel {
+    border: none;
+  }
+
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: #7367f0;
+  }
+
+  thead th:first-child {
+    display: none;
+  }
+}
+
+.profileBlock {
+  h1 {
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }
+}
