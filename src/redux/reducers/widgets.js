@@ -3,7 +3,7 @@ const initialState = {
     widgetsError: ''
 }
 
-const widgetsReducer = (state = initialState, action) => {
+export const widgets = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_WIDGET': 
             return {
@@ -24,5 +24,3 @@ const widgetsReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default widgetsReducer;

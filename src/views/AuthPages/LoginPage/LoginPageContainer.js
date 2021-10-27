@@ -1,8 +1,7 @@
-import LoginPage from '.';
-
-import { login } from '../../../redux/actions/auth';
-
 import { connect } from 'react-redux';
+
+import { LoginPage } from './LoginPage';
+import { login } from '../../../redux/actions/auth';
 
 const LoginPageContainer = (props) => {
     return(
@@ -17,14 +16,12 @@ const LoginPageContainer = (props) => {
 }
 
 
-
 const mapStateToProps = (state) => {
     return {
         auth: state.auth.auth,
         loginError: state.auth.loginError
     }
 }
-
 
 export default connect(mapStateToProps,{
     login

@@ -3,7 +3,7 @@ const initialState = {
     loadingInProcess: false
 }
 
-const appReducer = (state = initialState, action) => {
+export const app = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_FILTER_DATE':
             return {
@@ -19,5 +19,3 @@ const appReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default appReducer;

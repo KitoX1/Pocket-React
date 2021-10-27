@@ -1,17 +1,17 @@
-import './calendar.less';
-import profilePhoto from '../../assets/img/profilePhoto.png'
-
 import moment from 'moment';
-
 import { DatePicker } from 'antd';
 import { Select } from 'antd';
 import { useState } from 'react'
 
-const ProfileFilter = ({ setUserData, username }) => {
+import './profileFilter.less';
+import profilePhoto from '../../assets/img/profilePhoto.png'
+
+export const ProfileFilter = ({ setUserData, username }) => {
     const { Option } = Select;
+
     const [datePickerState, setDatePickerState] = useState('week')
 
-    const calendarChange = (date, dateString) => {
+    const onDateChange = (date, dateString) => {
         let dateFormat = 'YYYY.wo'
         if (datePickerState === 'month') {
             dateFormat = 'YYYY.MM'
@@ -24,7 +24,7 @@ const ProfileFilter = ({ setUserData, username }) => {
         setUserData(filterDate, { start_date: startDate, end_date: endDate })
     }
 
-    const selectChange = (value) => {
+    const onSelectChange = (value) => {
         setDatePickerState(value);
     }
 
@@ -33,16 +33,18 @@ const ProfileFilter = ({ setUserData, username }) => {
             <img src={profilePhoto} alt="profile"/>
             <h1 title={username}>Hi, {username}</h1>
         </div>
+
         <div className="calendar">
             <span className="calendar__title">Data Filter</span>
-            <Select defaultValue="week" onChange={selectChange}>
+
+            <Select defaultValue="week" onChange={onSelectChange}>
                 <Option value="week">week</Option>
                 <Option value="month">month</Option>
                 <Option value="year">year</Option>
             </Select>
 
             <DatePicker
-            onChange={calendarChange} 
+            onChange={onDateChange} 
             value={false} 
             picker={datePickerState} 
             open={true}
@@ -52,5 +54,3 @@ const ProfileFilter = ({ setUserData, username }) => {
         </div>
     </>)
 }
-
-export default ProfileFilter;

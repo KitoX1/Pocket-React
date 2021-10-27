@@ -1,9 +1,7 @@
-import Summary from ".";
-
-import { addCategory, deleteCategory } from '../../redux/actions/summary';
-
 import { connect } from 'react-redux';
 
+import { Summary } from "./Summary";
+import { addCategory, deleteCategory } from '../../redux/actions/summary';
 
 const SummaryContainer = (props) => {
     return(
@@ -18,7 +16,6 @@ const SummaryContainer = (props) => {
         </>
     )
 }
-
 
 
 const mapStateToProps = (state) => {

@@ -3,7 +3,6 @@ import { setLoading } from "./app";
 import { updateGlobal } from "./global";
 import { deleteTransactionsByCategory } from "./transactions";
 
-
 export const addCategoryToStore = (newCategory) => {
     return {
         type: 'ADD_CATEGORY_TO_STORE',
@@ -39,7 +38,6 @@ export const updateCategory = (categoryId, amount) => {
         amount
     }
 }
-
 
 
 export const addCategory = (values) => async (dispatch) => {

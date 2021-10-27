@@ -1,6 +1,5 @@
 import { globalAPI } from "../../api/api";
 
-
 export const setGlobalToStore = (global) => {
     return {
         type: 'SET_GLOBAL',
@@ -15,7 +14,6 @@ export const updateGlobal = (categoryType, amount) => {
         amount
     }
 }
-
 
 
 export const getGlobal = (dates) => async (dispatch) => {

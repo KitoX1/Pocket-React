@@ -1,9 +1,7 @@
-import Transactions from ".";
-
-import { addTransaction, deleteTransaction, editTransaction } from '../../redux/actions/transactions';
-
 import { connect } from 'react-redux';
 
+import { Transactions } from "./Transactions";
+import { addTransaction, deleteTransaction, editTransaction } from '../../redux/actions/transactions';
 
 const TransactionsContainer = (props) => {
     return(
@@ -18,7 +16,6 @@ const TransactionsContainer = (props) => {
         />
     )
 }
-
 
 
 const mapStateToProps = (state) => {

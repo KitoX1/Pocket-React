@@ -1,8 +1,7 @@
-import RegistrationPage from '.';
-
-import { register, setRegistrationSuccess } from '../../../redux/actions/auth';
-
 import { connect } from 'react-redux';
+
+import { RegistrationPage } from './RegistrationPage';
+import { register, setRegistrationSuccess } from '../../../redux/actions/auth';
 
 const RegistrationPageContainer = (props) => {
     return(
@@ -17,7 +16,6 @@ const RegistrationPageContainer = (props) => {
         </>
     )
 }
-
 
 
 const mapStateToProps = (state) => {

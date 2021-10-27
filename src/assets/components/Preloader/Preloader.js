@@ -1,8 +1,6 @@
 import './preloader.less'
 import preloader from '../../img/preloader.svg'
 
-const Preloader = () => {
+export const Preloader = () => {
     return <img src={preloader} alt="preloader" className="preloader"/>
 }
-
-export default Preloader;

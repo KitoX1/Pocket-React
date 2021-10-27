@@ -3,7 +3,7 @@ const initialState = {
     summaryError: null
 }
 
-const summaryReducer = (state = initialState, action) => {
+export const summary = (state = initialState, action) => {
     switch (action.type) { 
         case 'ADD_CATEGORY_TO_STORE':
             return {
@@ -39,5 +39,3 @@ const summaryReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default summaryReducer;

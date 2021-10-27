@@ -3,7 +3,6 @@ import { getGlobal, updateGlobal } from "./global";
 import { getTransactions } from "./transactions";
 import { getWidgets } from "./widgets";
 
-
 export const setFilterDate = (filterDate) => {
     return {
         type: 'SET_FILTER_DATE',

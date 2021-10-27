@@ -1,7 +1,6 @@
 import { widgetsAPI } from "../../api/api";
 import { setLoading } from "./app";
 
-
 export const addWidgetToStore = (widget) => {
     return {
         type: 'ADD_WIDGET',
@@ -22,7 +21,6 @@ export const setWidgetsToStore = (widgets) => {
         widgets
     }
 }
-
 
 
 export const addWidget = (values) => async (dispatch) => {

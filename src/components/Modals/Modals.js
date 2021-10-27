@@ -1,23 +1,24 @@
-import './modals.less';
-
 import moment from 'moment';
-
 import { useState, useEffect } from 'react';
 import { Modal,Form, Input, Button, Radio, DatePicker, InputNumber, Select } from 'antd';
 
-
+import './modals.less';
 
 export const TransactionsModal = ({ addTransaction, categories, closeModal, editTransaction, filterDate, initialValues, loadingInProcess, modalType, modalState  }) => {
-    const [form] = Form.useForm()
     const { Option } = Select;
+
+    const [form] = Form.useForm();
     const [options, setOptions] = useState(categories);
     const [requiredError, setRequiredError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     useEffect(() => {
-        setLoading(loadingInProcess)
-        setOptions(categories)
-    }, [loadingInProcess, categories])
+        setIsLoading(loadingInProcess);
+    }, [loadingInProcess]);
+
+    useEffect(() => {
+        setOptions(categories);
+    }, [categories]);
     
     useEffect(() => {
         modalType === 'add' 
@@ -26,15 +27,12 @@ export const TransactionsModal = ({ addTransaction, categories, closeModal, edit
             'transaction_date': moment(initialValues.transaction_date,'YYYY-MM-DD'),
             'category': `${initialValues.category}`,
             'amount': initialValues.amount
-        })
-    }, [form, initialValues, modalType])
+        });
+    }, [form, initialValues, modalType]);
 
     const onFinish = (data) => {
         let updateData = false;
-        const values = {
-            ...data,
-            'transaction_date': data['transaction_date'].format('YYYY-MM-DD'),
-        };
+        const values = {...data, 'transaction_date': data['transaction_date'].format('YYYY-MM-DD')}
         if (filterDate.date === moment(values.transaction_date).format(filterDate.format)) { updateData = true }
         modalType === 'add' ? addTransaction(values, updateData) : editTransaction(initialValues.id, values, updateData, initialValues);
         setRequiredError(false);
@@ -117,7 +115,7 @@ export const TransactionsModal = ({ addTransaction, categories, closeModal, edit
 
                 {requiredError && <p className="modal__error">Please fill in all fields</p>}
                 
-                <Button type="primary" htmlType="submit" loading={loading}>{ modalType === 'add' ? 'Add' : 'Update'}</Button>
+                <Button type="primary" htmlType="submit" loading={isLoading}>{ modalType === 'add' ? 'Add' : 'Update'}</Button>
             </Form>
         </Modal>
     )
@@ -127,16 +125,17 @@ export const TransactionsModal = ({ addTransaction, categories, closeModal, edit
 
 export const SummaryModal = ({ addCategory, closeModal, loadingInProcess, modalState, summaryError }) => {
     const [requiredError, setRequiredError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(loadingInProcess)
-    }, [loadingInProcess])
+        setIsLoading(loadingInProcess);
+    }, [loadingInProcess]);
 
     const onFinish = (values) => {
         addCategory(values);
         setRequiredError(false);
-    };
+    }
+
     return(
         <Modal
         title="Add category"
@@ -163,7 +162,6 @@ export const SummaryModal = ({ addCategory, closeModal, loadingInProcess, modalS
                 </Form.Item>
 
                 <div className="modal__inputsGroup">
-                    
                     <Form.Item
                     name="name"
                     rules={[{ required: true }]}
@@ -176,7 +174,7 @@ export const SummaryModal = ({ addCategory, closeModal, loadingInProcess, modalS
                 {requiredError && <p className="modal__error">Please fill in category name</p>}
                 {summaryError !== null && requiredError === false && <p className="modal__error">{summaryError}</p>}
                 
-                <Button type="primary" htmlType="submit" loading={loading}>Add</Button>
+                <Button type="primary" htmlType="submit" loading={isLoading}>Add</Button>
             </Form>
         </Modal>
     )
@@ -186,17 +184,18 @@ export const SummaryModal = ({ addCategory, closeModal, loadingInProcess, modalS
 
 export const WidgetsModal = ({ addWidget, categories, closeModal, loadingInProcess, modalState, }) => {
     const { Option } = Select;
+
     const [options, setOptions] = useState(categories);
     const [requiredError, setRequiredError] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     useEffect(() => {
-        setLoading(loadingInProcess)
-        setOptions(categories)
-    }, [loadingInProcess, categories])
+        setIsLoading(loadingInProcess);
+        setOptions(categories);
+    }, [loadingInProcess, categories]);
     
     const onFinish = (values) => {
-        addWidget(values)
+        addWidget(values);
         setRequiredError(false);
     }
     return(
@@ -323,7 +322,7 @@ export const WidgetsModal = ({ addWidget, categories, closeModal, loadingInProce
 
                 {requiredError && <p className="modal__error">Please fill in all fields</p>}
                 
-                <Button type="primary" htmlType="submit" loading={loading}>Add</Button>
+                <Button type="primary" htmlType="submit" loading={isLoading}>Add</Button>
             </Form>
         </Modal>
     )

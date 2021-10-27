@@ -1,10 +1,8 @@
-import Global from '.';
-
 import { connect } from 'react-redux';
 
+import { Global } from './Global';
 
 const GlobalContainer = (props) => {
-
     return(
         <>
             <Global
@@ -14,7 +12,6 @@ const GlobalContainer = (props) => {
         </>
     )
 }
-
 
 
 const mapStateToProps = (state) => {

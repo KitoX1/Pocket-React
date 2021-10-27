@@ -2,7 +2,7 @@ const initialState = {
     transactions: []
 }
 
-const transactionsReducer = (state = initialState, action) => {
+export const transactions = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_TRANSACTION_TO_STORE':
             return {
@@ -43,5 +43,3 @@ const transactionsReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default transactionsReducer;

@@ -1,8 +1,6 @@
 import { authAPI } from "../../api/api";
 import { setLoading } from "./app";
 
-
-
 export const setAuth = (flag) => {
     return {
         type: 'SET_AUTH',

@@ -1,7 +1,6 @@
-import ProfileFilter from '.';
-
 import { connect } from 'react-redux';
 
+import { ProfileFilter } from './ProfileFilter';
 import { setUserData } from '../../redux/actions/app';
 
 const ProfileFilterContainer = (props) => {
@@ -14,7 +13,6 @@ const ProfileFilterContainer = (props) => {
         </>
     )
 }
-
 
 
 const mapStateToProps = (state) => {

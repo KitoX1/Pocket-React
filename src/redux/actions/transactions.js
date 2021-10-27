@@ -1,7 +1,6 @@
 import { transactionsAPI } from "../../api/api";
 import { setLoading, updateUserData } from "./app";
 
-
 export const addTransactionToStore = (newTransaction) => {
     return {
         type: 'ADD_TRANSACTION_TO_STORE',
@@ -36,7 +35,6 @@ export const setTransactionsToStore = (transactions) => {
         transactions
     }
 }
-
 
 
 export const addTransaction = (values, updateData) => async (dispatch) => {

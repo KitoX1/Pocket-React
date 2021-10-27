@@ -1,30 +1,27 @@
-import './App.less';
-
-import LoginPageContainer from "./views/AuthPages/LoginPage/container";
-import MainPageContainer from './views/MainPage/container';
-import RegistrationPageContainer from "./views/AuthPages/RegistrationPage/container";
-
-import { ROUTES } from './constants/routes';
-
 import { Switch, Route } from "react-router-dom";
 
+import './App.less';
+import { ROUTES } from './constants/routes';
+import LoginPageContainer from "./views/AuthPages/LoginPage/LoginPageContainer";
+import MainPageContainer from './views/MainPage/MainPageContainer';
+import RegistrationPageContainer from "./views/AuthPages/RegistrationPage/RegistrationPageContainer";
 
-const App = () => {
+export const App = () => {
   return (
     <div className="App">
       <Switch>
           <Route path={ROUTES.login}>
             <LoginPageContainer />
           </Route>
+          
           <Route path={ROUTES.registration}>
             <RegistrationPageContainer />
           </Route>
-          <Route path="/">
+
+          <Route path={ROUTES.main}>
             <MainPageContainer />
           </Route>
         </Switch>      
     </div>
-  );
+  )
 }
-
-export default App;

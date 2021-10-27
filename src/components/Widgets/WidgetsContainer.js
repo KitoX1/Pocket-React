@@ -1,9 +1,7 @@
-import Widgets from ".";
-
-import { addWidget, deleteWidget, getWidgets  } from '../../redux/actions/widgets';
-
 import { connect } from 'react-redux';
 
+import { Widgets } from "./Widgets";
+import { addWidget, deleteWidget, getWidgets  } from '../../redux/actions/widgets';
 
 const WidgetsContainer = (props) => {
     return(
@@ -20,7 +18,6 @@ const WidgetsContainer = (props) => {
 }
 
 
-
 const mapStateToProps = (state) => {
     return {
         categories: state.summary.categories,
@@ -28,8 +25,6 @@ const mapStateToProps = (state) => {
         widgets: state.widgets.widgets,
     }
 }
-
-
 
 export default connect(mapStateToProps,{
     addWidget,

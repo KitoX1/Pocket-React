@@ -5,7 +5,7 @@ const initialState = {
     }
 }
 
-const globalReducer = (state = initialState, action) => {
+export const global = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_GLOBAL':
             return {
@@ -21,5 +21,3 @@ const globalReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default globalReducer

@@ -1,16 +1,20 @@
-import { setAuth } from '../redux/actions/auth';
-
 import axios from 'axios';
-import store from '../redux/reduxStore';
 
-
+import { REQUESTS } from '../constants/requests';
+import { setAuth } from '../redux/actions/auth';
+import { store } from '../redux/reduxStore';
 
 const instance = axios.create({
-    baseURL: 'http://89.108.102.170/api/',
+    baseURL: REQUESTS.baseUrl,
+})
+
+const instanceNoToken = axios.create({
+    baseURL: REQUESTS.baseUrl + REQUESTS.auth,
 })
 
 instance.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`
+    config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`;
+
     return config;
 })
 
@@ -22,12 +26,14 @@ instance.interceptors.response.use((config) => {
     if (error.response.status === 401 && error.config && !error.config._isRetry) {
         originalRequest._isRetry = true;
         try {
-            const response = await axios.post(`http://89.108.102.170/api/auth/token/refresh/`, {"refresh": localStorage.getItem('refresh')})
+            const response = await instanceNoToken.post('token/refresh/', {'refresh': localStorage.getItem('refresh')});
+            
             localStorage.setItem('access', response.data.access);
             localStorage.setItem('refresh', response.data.refresh);
+
             return instance.request(originalRequest);
         } catch {
-            store.dispatch(setAuth(false))
+            store.dispatch(setAuth(false));
         }
     }
 
@@ -38,15 +44,18 @@ instance.interceptors.response.use((config) => {
 
 export const authAPI = {
     async getUsername() {
-        const {data} = await instance.get('users/me/')
+        const {data} = await instance.get('users/me/');
+
         return data;
     },
     async login(values) {
-        const {data} = await instance.post('auth/token/obtain/', values)
+        const {data} = await instance.post(`${REQUESTS.auth}token/obtain/`, values);
+
         return data;
     },
     async register(values) {
-        const {data} = await axios.post('http://89.108.102.170/api/auth/register/', values)
+        const {data} = await instanceNoToken.post('register/', values);
+
         return data;
     }
 }
@@ -55,14 +64,15 @@ export const authAPI = {
 
 export const categoriesAPI = {
     async addCategory(values) {
-        const {data} = await instance.post('pockets/categories/', values)
+        const {data} = await instance.post(REQUESTS.categories, values);
+
         return data;
     },
     deleteCategory(categoryId) {
-        return instance.delete(`pockets/categories/${categoryId}/`)
+        return instance.delete(`${REQUESTS.categories}${categoryId}/`);
     },
     getCategories(dates) {
-        return instance.get('pockets/categories/transactions-by-categories/', { params: { start_date: dates.start_date, end_date: dates.end_date } })
+        return instance.get(`${REQUESTS.categories}transactions-by-categories/`, { params: { start_date: dates.start_date, end_date: dates.end_date } });
     }
 }
 
@@ -70,7 +80,8 @@ export const categoriesAPI = {
 
 export const globalAPI = {
     async getGlobal(dates) {
-        const {data} = await instance.get('pockets/transactions/global/', { params: { start_date: dates.start_date, end_date: dates.end_date } })
+        const {data} = await instance.get(`${REQUESTS.transactions}global/`, { params: { start_date: dates.start_date, end_date: dates.end_date } });
+        
         return data;
     }
 }
@@ -79,18 +90,21 @@ export const globalAPI = {
 
 export const transactionsAPI = {
     async addTransaction(values) {
-        const {data} = await instance.post('pockets/transactions/', values)
+        const {data} = await instance.post(REQUESTS.transactions, values);
+        
         return data;
     },
     deleteTransaction(transactionId) {
-        return instance.delete(`pockets/transactions/${transactionId}/`)
+        return instance.delete(`${REQUESTS.transactions}${transactionId}/`);
     },
     async editTransaction(transactionId, values) {
-        const {data} = await instance.put(`pockets/transactions/${transactionId}/`, values)
+        const {data} = await instance.put(`${REQUESTS.transactions}${transactionId}/`, values);
+        
         return data;
     },
     async getTransactions(dates) {
-        const {data} = await instance.get('pockets/transactions/', { params: { start_date: dates.start_date, end_date: dates.end_date } })
+        const {data} = await instance.get(REQUESTS.transactions, { params: { start_date: dates.start_date, end_date: dates.end_date } });
+        
         return data.results;
     }
 }
@@ -99,14 +113,16 @@ export const transactionsAPI = {
 
 export const widgetsAPI = {
     async addWidget(values) {
-        const {data} = await instance.post('pockets/widgets/', values)
+        const {data} = await instance.post(REQUESTS.widgets, values);
+        
         return data;
     },
     deleteWidget(widgetId) {
-        return instance.delete(`pockets/widgets/${widgetId}/`)
+        return instance.delete(`${REQUESTS.widgets}${widgetId}/`);
     },
     async getWidgets() {
-        const {data} = await instance.get('pockets/widgets/')
+        const {data} = await instance.get(REQUESTS.widgets);
+        
         return data;
     },
 }
